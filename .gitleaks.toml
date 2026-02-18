@@ -1,0 +1,8 @@
+title = "Enterprise Secret Detection Config"
+
+[allowlist]
+description = "Allow dummy test secrets"
+paths = [
+  '''README.md'''
+]
+

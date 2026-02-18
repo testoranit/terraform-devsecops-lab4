@@ -1,0 +1,118 @@
+########################################
+# Terraform Core Files (DO NOT COMMIT)
+########################################
+
+# Local Terraform state (contains sensitive info)
+*.tfstate
+*.tfstate.*
+
+# Terraform cache directory
+.terraform/
+
+# Terraform lock info backups
+.terraform.lock.hcl.backup
+
+# Crash logs
+crash.log
+crash.*.log
+
+
+########################################
+# Terraform Variable Files (Sensitive)
+########################################
+
+# Terraform variable override files
+*.tfvars
+*.tfvars.json
+
+# Exception: keep example tfvars in repo
+!envs/dev.tfvars
+!envs/prod.tfvars
+
+
+########################################
+# Terraform Override Files
+########################################
+
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+
+########################################
+# CLI Config Files
+########################################
+
+.terraformrc
+terraform.rc
+
+
+########################################
+# Secrets & Credentials (Never Commit)
+########################################
+
+*.pem
+*.key
+*.pfx
+*.p12
+
+# AWS credentials files
+.aws/
+credentials
+config
+
+
+########################################
+# DevSecOps Tool Outputs
+########################################
+
+# Checkov reports
+checkov-report.json
+
+# Trivy reports
+trivy-report.json
+
+# Terrascan output
+terrascan-report.json
+
+# Gitleaks report
+gitleaks-report.json
+
+
+########################################
+# OS / IDE Junk Files
+########################################
+
+.DS_Store
+Thumbs.db
+
+# VS Code
+.vscode/
+
+# IntelliJ
+.idea/
+
+# Logs
+*.log
+
+
+########################################
+# Python Virtual Environment (if used)
+########################################
+
+venv/
+.venv/
+__pycache__/
+*.pyc
+
+
+########################################
+# Build / Temporary Files
+########################################
+
+tmp/
+temp/
+
+reports/
+

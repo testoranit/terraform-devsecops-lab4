@@ -1,0 +1,46 @@
+name: DevSecOps Terraform CI (Dev)
+
+on:
+  push:
+    branches:
+      - dev
+
+jobs:
+  security-gate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+
+      - name: Terraform Init
+        run: terraform init
+        working-directory: infra/
+
+      - name: Terraform Validate
+        run: terraform validate
+        working-directory: infra/
+
+      - name: Secrets Scan - Gitleaks
+        uses: gitleaks/gitleaks-action@v2
+
+      - name: IaC Scan - Checkov
+        run: checkov -d infra/
+
+      - name: Compliance Scan - Terrascan Custom Policies
+        run: terrascan scan -i terraform -d infra/ -p policies/terrascan/
+
+      - name: Vulnerability Scan - Trivy (Config Scan)
+        run: trivy config infra/
+
+# Future Production Stage (Manual Approval)
+#
+# apply-prod:
+#   needs: security-gate
+#   environment:
+#     name: prod
+#   run: terraform apply -auto-approve
+
