@@ -103,7 +103,8 @@ resource "aws_s3_bucket_lifecycle_configuration" "lifecycle" {
 
 
 resource "aws_sns_topic" "bucket_notifications" {
-  name = "bucket-notifications"
+  name              = "bucket-notifications"
+  kms_master_key_id = "alias/aws/sns"
 }
 
 resource "aws_s3_bucket_notification" "bucket_notification" {
