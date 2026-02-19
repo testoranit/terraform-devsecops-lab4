@@ -63,7 +63,7 @@ terrascan:
 	  -d infra/ \
 	  -p policies/terrascan/ \
 	  -o json \
-	  --output $(REPORTS_DIR)/terrascan-report.json
+	  > $(REPORTS_DIR)/terrascan-report.json
 
 ############################################
 # Step 7: Misconfiguration Scan (Trivy)
