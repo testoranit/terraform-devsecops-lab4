@@ -37,12 +37,21 @@ gitleaks:
 
 ############################################
 # Step 5: IaC Security Scan (Checkov)
+# - CLI readable output stored in TXT
+# - JSON output stored for audit evidence
 ############################################
 checkov:
 	@echo "Running checkov scan..."
-	checkov -d infra/ \
-	  --output json \
-	  --output-file-path $(REPORTS_DIR)/
+
+	@echo "Generating human-readable Checkov report..."
+	checkov -d infra/ --output cli --quiet \
+	  > $(REPORTS_DIR)/checkov-report.txt
+
+	@echo "Generating JSON evidence report..."
+	checkov -d infra/ --output json --output-file-path $(REPORTS_DIR)/
+
+	@echo "Renaming JSON report..."
+	mv $(REPORTS_DIR)/results_json.json $(REPORTS_DIR)/checkov-report.json
 
 ############################################
 # Step 6: Compliance Scan (Terrascan + Custom Policies)
