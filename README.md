@@ -1,4 +1,4 @@
-# Terraform DevSecOps Production Lab
+# Terraform DevSecOps Production Lab testing the code
 
 ## Scenario
 Developer works on Jira ticket CLOUD-1023 and creates secure S3 infrastructure.
